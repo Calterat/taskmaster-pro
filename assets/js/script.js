@@ -187,6 +187,22 @@ $("#remove-tasks").on("click", function() {
   saveTasks();
 });
 
+// Make lists sortable
+$(".card .list-group").sortable({connectWith: $(".card .list-group"),
+scroll: false,
+tolerance: "pointer",
+helper: "clone",
+activate: function(event) {
+  console.log("activate", this);
+},
+over: function(event) {
+  console.log("over", event.target);
+},
+update: function(event) {
+  console.log($(this).children());
+}
+});
+
 // load tasks for the first time
 loadTasks();
 
